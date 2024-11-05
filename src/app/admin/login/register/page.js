@@ -48,7 +48,7 @@ export default function RegisterPage() {
                             )}
                             <Form onSubmit={handleRegister}>
                                 <Form.Group controlId="formUsername" className="mb-3">
-                                    <Form.Label>Usuário</Form.Label>
+                                    <Form.Label className="escrita">Usuário</Form.Label>
                                     <Form.Control
                                         type="text"
                                         placeholder="Digite seu nome de usuário"
@@ -58,7 +58,7 @@ export default function RegisterPage() {
                                     />
                                 </Form.Group>
                                 <Form.Group controlId="formPassword" className="mb-3">
-                                    <Form.Label>Senha</Form.Label>
+                                    <Form.Label className="escrita">Senha</Form.Label>
                                     <Form.Control
                                         type="password"
                                         placeholder="Digite sua senha"
@@ -68,7 +68,7 @@ export default function RegisterPage() {
                                     />
                                 </Form.Group>
                                 <Form.Group controlId="formSecretPassword" className="mb-3">
-                                    <Form.Label>Senha do Lojista</Form.Label>
+                                    <Form.Label className="escrita">Senha do Lojista</Form.Label>
                                     <Form.Control
                                         type="password"
                                         placeholder="Digite sua senha secreta"
@@ -78,7 +78,7 @@ export default function RegisterPage() {
                                     />
                                 </Form.Group>
                                 <div className="d-grid gap-2">
-                                    <Button variant="danger" type="submit" className="mt-3">
+                                    <Button variant="danger" type="submit" className="mt-3 escrita2">
                                         Registrar
                                     </Button>
                                 </div>

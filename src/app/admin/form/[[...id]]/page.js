@@ -16,11 +16,12 @@ export default function Page() {
     const params = useParams();
 
     const tiposCambio = ["Automático", "Manual"];
+    const tiposModelo = ["Hatch", "Sedã", "SUV", "Picapes", "Perua", "Esportivo"];
     const tiposDirecao = ["Hidráulica", "Elétrica", "Mecânica", "Direção Assistida"];
     const anosFabricacao = Array.from({ length: 50 }, (_, i) => new Date().getFullYear() - i);
 
     const carros = JSON.parse(localStorage.getItem('carros')) || [];
-    const dados = carros.find(item => item.id == params.id); // Acessando params.id corretamente
+    const dados = carros.find(item => item.id == params.id);
     const carro = dados || { nome: '', marca: '', valor: '', imagem: '', ano: '', direcao: '', cambio: '', motor: '', cor: '', portas: '' };
 
     function salvar(dados) {
@@ -38,6 +39,7 @@ export default function Page() {
 
     return (
         <Pagina>
+            <br />
             <br />
             <Formik
                 initialValues={carro}
@@ -77,6 +79,27 @@ export default function Page() {
                             />
                             <Form.Control.Feedback type="invalid">
                                 {errors.marca}
+                            </Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group className="mb-4" controlId="modelo">
+                            <Form.Label>Modelo</Form.Label>
+                            <Form.Select
+                                as="select"
+                                name="modelo"
+                                value={values.modelo}
+                                onChange={handleChange}
+                                isInvalid={errors.modelo}
+                            >
+                                <option value="">Selecione o modelo do veículo</option>
+                                {tiposModelo.map((tipo, index) => (
+                                    <option key={index} value={tipo}>
+                                        {tipo}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                            <Form.Control.Feedback type="invalid">
+                                {errors.modelo}
                             </Form.Control.Feedback>
                         </Form.Group>
 
@@ -228,6 +251,7 @@ export default function Page() {
                     </Form>
                 )}
             </Formik>
+                <br />
         </Pagina>
     );
 }

@@ -79,85 +79,111 @@ export default function Home() {
         <div className="lo mb-4">Lojas Oficiais</div>
 
         <Container className="circle-container mb-4">
-          <a href="#link1">
-            <Image src="https://i.pinimg.com/736x/c8/22/db/c822db8663c659917e7a629bbb858ddf.jpg" className="custom-circle" />
-          </a>
-          <a href="#link2">
-            <Image src="https://i.pinimg.com/736x/3c/f6/3f/3cf63f3e54f7ba8cddb3e9e070c7389d.jpg" className="custom-circle" />
-          </a>
-          <a href="#link3">
-            <Image src="https://i.pinimg.com/736x/95/ed/5f/95ed5f9b09bf823d0304598ad3796840.jpg" className="custom-circle" />
-          </a>
-          <a href="#link4">
-            <Image src="https://i.pinimg.com/736x/59/3f/d3/593fd392e1d485989e61865ed5f7c2ff.jpg" className="custom-circle" />
-          </a>
-          <a href="#link5">
-            <Image src="https://i.pinimg.com/736x/5e/64/68/5e6468b00af6fd05e8c9d3ca82c6beda.jpg" className="custom-circle" />
-          </a>
-          <a href="#link6">
-            <Image src="https://i.pinimg.com/736x/d2/ad/86/d2ad8693713237e9eef48b4f6fa5fa5f.jpg" className="custom-circle" />
-          </a>
-          <a href="#link7">
-            <Image src="https://i.pinimg.com/736x/71/1f/f6/711ff67d48c1da298ae576f1339c93e8.jpg" className="custom-circle" />
-          </a>
-          <a href="#link8">
-            <Image src="https://i.pinimg.com/736x/15/69/dc/1569dc84ca1553fee5020868755d1b73.jpg" className="custom-circle" />
-          </a>
+          <Carousel interval={4000} controls={false} indicators={false} slide>
+            <Carousel.Item>
+              <Row>
+                <Col xs={3}>
+                  <a href="#link1">
+                    <Image src="https://i.pinimg.com/736x/c8/22/db/c822db8663c659917e7a629bbb858ddf.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+                <Col xs={3}>
+                  <a href="#link2">
+                    <Image src="https://i.pinimg.com/736x/3c/f6/3f/3cf63f3e54f7ba8cddb3e9e070c7389d.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+                <Col xs={3}>
+                  <a href="#link3">
+                    <Image src="https://i.pinimg.com/736x/95/ed/5f/95ed5f9b09bf823d0304598ad3796840.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+                <Col xs={3}>
+                  <a href="#link4">
+                    <Image src="https://i.pinimg.com/736x/59/3f/d3/593fd392e1d485989e61865ed5f7c2ff.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+              </Row>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Row>
+                <Col xs={3}>
+                  <a href="#link5">
+                    <Image src="https://i.pinimg.com/736x/5e/64/68/5e6468b00af6fd05e8c9d3ca82c6beda.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+                <Col xs={3}>
+                  <a href="#link6">
+                    <Image src="https://i.pinimg.com/736x/d2/ad/86/d2ad8693713237e9eef48b4f6fa5fa5f.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+                <Col xs={3}>
+                  <a href="#link7">
+                    <Image src="https://i.pinimg.com/736x/71/1f/f6/711ff67d48c1da298ae576f1339c93e8.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+                <Col xs={3}>
+                  <a href="#link8">
+                    <Image src="https://i.pinimg.com/736x/15/69/dc/1569dc84ca1553fee5020868755d1b73.jpg" className="custom-circle" />
+                  </a>
+                </Col>
+              </Row>
+            </Carousel.Item>
+          </Carousel>
         </Container>
 
         <div className="background">
-        <Form className="mb-4">
-          <Row className="mb-3">
-            <Col md={3}>
-              <Form.Group controlId="valorMaximo">
-                <Form.Label className="escrita">Valor Máximo</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="valorMaximo"
-                  value={filtro.valorMaximo}
-                  onChange={handleChange}
-                  placeholder="R$"
-                />
-              </Form.Group>
-            </Col>
-            <Col md={3}>
-              <Form.Group controlId="marca">
-                <Form.Label className="escrita">Marca</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="marca"
-                  value={filtro.marca}
-                  onChange={handleChange}
-                  placeholder="Marca do carro"
-                />
-              </Form.Group>
-            </Col>
-            <Col md={3}>
-              <Form.Group controlId="ano">
-                <Form.Label className="escrita">Ano</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="ano"
-                  value={filtro.ano}
-                  onChange={handleChange}
-                  placeholder="Ano do carro"
-                />
-              </Form.Group>
-            </Col>
-            <Col md={3}>
-              <Form.Group controlId="modelo">
-                <Form.Label className="escrita">Modelo</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="modelo"
-                  value={filtro.modelo}
-                  onChange={handleChange}
-                  placeholder="Modelo do carro"
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Form>
+          <Form className="mb-4">
+            <Row className="mb-3">
+              <Col md={3}>
+                <Form.Group controlId="valorMaximo">
+                  <Form.Label className="escrita">Valor Máximo</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="valorMaximo"
+                    value={filtro.valorMaximo}
+                    onChange={handleChange}
+                    placeholder="R$"
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group controlId="marca">
+                  <Form.Label className="escrita">Marca</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="marca"
+                    value={filtro.marca}
+                    onChange={handleChange}
+                    placeholder="Marca do carro"
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group controlId="ano">
+                  <Form.Label className="escrita">Ano</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="ano"
+                    value={filtro.ano}
+                    onChange={handleChange}
+                    placeholder="Ano do carro"
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group controlId="modelo">
+                  <Form.Label className="escrita">Modelo</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="modelo"
+                    value={filtro.modelo}
+                    onChange={handleChange}
+                    placeholder="Modelo do carro"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+          </Form>
         </div>
 
         {carrosFiltrados.length > 0 ? (

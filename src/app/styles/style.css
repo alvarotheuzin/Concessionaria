@@ -3,12 +3,13 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-  }
-  
+}
+
 .custom-navbar {
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+    position: relative;
+}
 
 .custom-carousel {
     height: 100px;
@@ -30,17 +31,32 @@ body {
 }
 
 .footer {
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer p {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
 }
 
+.footer-top {
+    background-color: #ff0000;
+    height: 40px;
+}
+
+.footer-middle {
+    background-color: #1d1d2b;
+    height: 140px;
+}
+
+.footer-bottom {
+    background-color: #ff0000;
+    padding: 5px 0;
+}
+
+.footer-text {
+    color: #ffffff;
+    margin: 0;
+    font-weight: bolder;
+}
 
 .circle-container {
     display: flex;
@@ -58,7 +74,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.custom-circle:hover{
+.custom-circle:hover {
     transform: scale(1.1);
 }
 
@@ -69,7 +85,7 @@ body {
     margin-top: 35px;
 }
 
-.form-label{
+.form-label {
     color: #000000;
 }
 
@@ -78,7 +94,6 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 }
-
 
 .login-card {
     padding: 2rem;
@@ -95,17 +110,20 @@ body {
     font-weight: bolder;
 }
 
-.escrita{
-  color: red;
-  font-weight: bold;
+.escrita {
+    color: red;
+    font-weight: bold;
+}
+
+.escrita2 {
+    color: white;
+    font-weight: bold;
 }
 
 .custom-navbar {
     padding: 0;
     background-color: #f8f9fa;
 }
-
-
 
 .background {
     background-color: white;
@@ -119,11 +137,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 50px;
 }
-  
 
-  .cardres{
+.cardres {
     background-color: black;
     color: white;
     font-weight: bolder;
-  }
-  
+}
+
+.registro-background {
+    background-color: #000000;
+}

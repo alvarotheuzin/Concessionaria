@@ -6,9 +6,12 @@ const carrosValidator = Yup.object().shape({
   
   marca: Yup.string()
     .required('Campo obrigatório'),
+  
+    modelo: Yup.string()
+    .required('Campo obrigatório'),
 
   imagem: Yup.string()
-    .url('Digite uma URL válida'),
+    .required('Digite uma URL válida'),
 
   valor: Yup.number()
     .required('Campo obrigatório'),

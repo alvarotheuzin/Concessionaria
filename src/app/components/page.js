@@ -51,9 +51,13 @@ export default function Pagina(props) {
             </Container>
 
             <footer className="footer">
-                <Container>
-                    <p className="text-center">&copy; Álvaro</p>
-                </Container>
+                <div className="footer-top"></div>
+                <div className="footer-middle"></div>
+                <div className="footer-bottom">
+                    <Container>
+                        <p className="footer-text text-center">&copy; Álvaro</p>
+                    </Container>
+                </div>
             </footer>
         </>
     );
