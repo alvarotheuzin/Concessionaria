@@ -51,7 +51,7 @@ export default function Home() {
     <div>
       <Pagina>
         <div className="full-width-carousel mb-4">
-          <Carousel>
+          <Carousel indicators={false} controls={false}>
             <Carousel.Item>
               <img
                 className="d-block w-100"

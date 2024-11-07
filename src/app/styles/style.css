@@ -27,7 +27,7 @@ body {
 
 .carousel img {
     max-height: 400px;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .footer {
@@ -45,6 +45,14 @@ body {
 .footer-middle {
     background-color: #1d1d2b;
     height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-custom-logo {
+    display: block;
+    margin: 0 auto;
 }
 
 .footer-bottom {
@@ -68,7 +76,7 @@ body {
 .custom-circle {
     width: 130px;
     height: 130px;
-    border-radius: 50%; 
+    border-radius: 50%;
     margin: 5px;
     border: 3px solid rgb(184, 184, 184);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

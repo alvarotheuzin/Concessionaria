@@ -52,7 +52,14 @@ export default function Pagina(props) {
 
             <footer className="footer">
                 <div className="footer-top"></div>
-                <div className="footer-middle"></div>
+                <div className="footer-middle">
+                    <Image
+                        src={logo}
+                        alt="Logo"
+                        width={180}
+                        className="footer-custom-logo"
+                    />
+                </div>
                 <div className="footer-bottom">
                     <Container>
                         <p className="footer-text text-center">&copy; Álvaro</p>
