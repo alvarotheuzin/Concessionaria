@@ -9,7 +9,8 @@ import { Button, Form } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { v4 } from "uuid";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { mask } from "remask";
 
 export default function Page() {
     const route = useRouter();
@@ -24,6 +25,9 @@ export default function Page() {
     const dados = carros.find(item => item.id == params.id);
     const carro = dados || { nome: '', marca: '', valor: '', imagem: '', ano: '', direcao: '', cambio: '', motor: '', cor: '', portas: '' };
 
+    const [valorFormatado, setValorFormatado] = useState("");
+
+
     function salvar(dados) {
         if (dados.id) {
             const index = carros.findIndex(item => item.id === dados.id);
@@ -36,6 +40,13 @@ export default function Page() {
         localStorage.setItem('carros', JSON.stringify(carros));
         route.push('/admin');
     }
+
+    useEffect(() => {
+        if (carro.valor) {
+            const valorInic = (parseFloat(carro.valor) || 0).toFixed(2).toString().replace(".", ",");
+            setValorFormatado(`R$ ${mask(valorInic, ['9.999.999,99'])}`);
+        }
+    }, [carro.valor]);
 
     return (
         <Pagina>
@@ -50,6 +61,7 @@ export default function Page() {
                     values,
                     handleChange,
                     handleSubmit,
+                    setFieldValue,
                     errors,
                 }) => (
 
@@ -101,22 +113,34 @@ export default function Page() {
                             <Form.Control.Feedback type="invalid">
                                 {errors.modelo}
                             </Form.Control.Feedback>
-                        </Form.Group>
 
+                        </Form.Group>
                         <Form.Group className="mb-4" controlId="valor">
                             <Form.Label>Valor</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="valor"
-                                value={values.valor}
-                                onChange={handleChange}
+                                value={valorFormatado}
+                                onChange={e => {
+                                    const valorDigitado = e.target.value;
+                                    const valorNumerico = valorDigitado.replace(/[^0-9]/g, "");
+                                    const valorDecimal = parseFloat(valorNumerico) / 100;
+
+                                    setFieldValue("valor", valorDecimal);
+
+                                    const valorCompleto = valorDecimal.toLocaleString("pt-BR", {
+                                        style: "currency",
+                                        currency: "BRL",
+                                    }).replace("R$", "R$ ");
+
+                                    setValorFormatado(valorCompleto);
+                                }}
                                 isInvalid={errors.valor}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {errors.valor}
                             </Form.Control.Feedback>
                         </Form.Group>
-
                         <Form.Group className="mb-4" controlId="imagem">
                             <Form.Label>Link da Imagem</Form.Label>
                             <Form.Control
@@ -251,7 +275,7 @@ export default function Page() {
                     </Form>
                 )}
             </Formik>
-                <br />
+            <br />
         </Pagina>
     );
 }

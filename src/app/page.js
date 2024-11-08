@@ -2,7 +2,7 @@
 
 import Pagina from "./components/page";
 import { useEffect, useState } from "react";
-import { Card, Carousel, Col, Container, Image, Row, Form } from "react-bootstrap";
+import { Card, Carousel, Col, Container, Image, Row, Form, Button } from "react-bootstrap";
 import Link from "next/link";
 import styles from './styles/style.css';
 
@@ -18,6 +18,15 @@ export default function Home() {
   useEffect(() => {
     setCarros(JSON.parse(localStorage.getItem('carros')) || []);
   }, []);
+
+  const formatarValor = (valor) => {
+    const valorDecimal = parseFloat(valor) || 0;
+    return valorDecimal.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).replace("R$", "R$ ");
+  };
+
 
   const aplicarFiltro = () => {
     return carros.filter(carro => {
@@ -203,20 +212,23 @@ export default function Home() {
                       {carro.motor}
                     </Card.Text>
                     <Card.Text>
-                      R$ {carro.valor}
+                      {formatarValor(carro.valor)}
                     </Card.Text>
                     <Card.Text>
                       Ano: {carro.ano}
                     </Card.Text>
-                  </Card.Body>
-                </Card>
+                    <Link href={`/detalhes/${carro.id}`}>
+                      <Button variant="primary">Ver Detalhes</Button>
+                    </Link>
+                </Card.Body>
+              </Card>
               </Col>
-            ))}
-          </Row>
-        ) : (
-          <p className="text-center">Nenhum carro cadastrado.</p>
+        ))}
+      </Row>
+      ) : (
+      <p className="text-center">Nenhum carro cadastrado.</p>
         )}
-      </Pagina>
-    </div>
+    </Pagina>
+    </div >
   );
 }

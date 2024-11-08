@@ -20,6 +20,15 @@ export default function Carros() {
         localStorage.setItem('carros', JSON.stringify(carrosAtualizados));
     };
 
+    const formatarValor = (valor) => {
+        const valorDecimal = parseFloat(valor) || 0;
+        return valorDecimal.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+        }).replace("R$", "R$ ");
+    };
+
+
     const cardStyle = {
         height: '380px',
         display: 'flex',
@@ -72,7 +81,7 @@ export default function Carros() {
                                         {carro.motor}
                                     </Card.Text>
                                     <Card.Text style={valorStyle}>
-                                        R$ {carro.valor}
+                                    {formatarValor(carro.valor)}
                                     </Card.Text>
                                     <Card.Text style={anoStyle}>
                                         Ano: {carro.ano}
