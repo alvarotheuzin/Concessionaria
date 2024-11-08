@@ -1,47 +1,46 @@
 'use client';
 
 import Pagina from "@/app/components/page";
-import { useEffect, useState } from 'react';
-import { Button, Container, Row, Col, Card, Carousel } from 'react-bootstrap';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import { Button, Col, Row, Container, Card, Carousel } from "react-bootstrap";
+import { useRouter } from 'next/navigation';
+import "@/app/styles/style2.css";
 
-const DetalhesCarro = () => {
+export default function DetalhesCarro({ params }) {
+  const router = useRouter();
   const [carro, setCarro] = useState(null);
-  const [isClient, setIsClient] = useState(false); // Usar um estado para saber se é no cliente
-  const router = useRouter();  // Definição do router
-  const { id } = router.query;  // Captura o parâmetro da URL (id)
-
-  // Definir como cliente após montagem do componente
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const [carroId, setCarroId] = useState(null);
 
   useEffect(() => {
-    if (id && isClient) {  // Certificar que 'id' e 'isClient' estão prontos
-      const carros = JSON.parse(localStorage.getItem('carros')) || [];
-      const carroSelecionado = carros.find(carro => carro.id === id);  // Busca pelo 'id' específico
-
-      if (carroSelecionado) {
-        setCarro(carroSelecionado);
-      } else {
-        setCarro(null);
-      }
+    async function fetchParams() {
+      const resolvedParams = await params;
+      setCarroId(resolvedParams.id);
     }
-  }, [id, isClient]);  // O segundo argumento garante que o efeito só rodará quando id ou isClient mudarem
 
-  if (!carro) return <p>Carro não encontrado.</p>;  // Caso não encontre o carro, retorna uma mensagem
+    fetchParams();
+  }, [params]);
+
+  useEffect(() => {
+    if (carroId) {
+      const carros = JSON.parse(localStorage.getItem('carros')) || [];
+      const carroEncontrado = carros.find(carro => carro.id === carroId);
+      setCarro(carroEncontrado || {});
+    }
+  }, [carroId]);
+
+  if (!carro) return null;
 
   return (
     <Pagina>
-      <Container className="my-5">
+      <Container>
         <div className="d-flex justify-content-center flex-column align-items-center">
-          <Carousel style={{ maxWidth: '800px' }}>
+          <Carousel style={{ maxWidth: '800px'  }} indicators={false} controls={false}>
             {carro.imagem ? (
               <Carousel.Item>
                 <img
                   src={carro.imagem}
                   alt={`Imagem do carro ${carro.nome}`}
-                  style={{ width: '100%', height: 'auto', borderRadius: '10px' }}
+                  style={{ width: '100%', height: 'auto'}}
                 />
               </Carousel.Item>
             ) : (
@@ -55,7 +54,7 @@ const DetalhesCarro = () => {
             )}
           </Carousel>
 
-          <Card className="mt-5" style={{ width: '100%', maxWidth: '1000px', borderRadius: '15px', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}>
+          <Card className="carddetalhe">
             <Card.Body>
               <Card.Title className="text-center escrita" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
                 {carro.nome}
@@ -101,6 +100,4 @@ const DetalhesCarro = () => {
       </Container>
     </Pagina>
   );
-};
-
-export default DetalhesCarro;
+}

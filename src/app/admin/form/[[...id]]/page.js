@@ -23,7 +23,7 @@ export default function Page() {
 
     const carros = JSON.parse(localStorage.getItem('carros')) || [];
     const dados = carros.find(item => item.id == params.id);
-    const carro = dados || { nome: '', marca: '', valor: '', imagem: '', ano: '', direcao: '', cambio: '', motor: '', cor: '', portas: '' };
+    const carro = dados || { nome: '', marca: '', valor: '', imagem: '', imagem2: '', imagem3: '', ano: '', direcao: '', cambio: '', motor: '', cor: '', portas: '' };
 
     const [valorFormatado, setValorFormatado] = useState("");
 
@@ -141,6 +141,7 @@ export default function Page() {
                                 {errors.valor}
                             </Form.Control.Feedback>
                         </Form.Group>
+                        
                         <Form.Group className="mb-4" controlId="imagem">
                             <Form.Label>Link da Imagem</Form.Label>
                             <Form.Control
@@ -152,6 +153,34 @@ export default function Page() {
                             />
                             <Form.Control.Feedback type="invalid">
                                 {errors.imagem}
+                            </Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group className="mb-4" controlId="imagem2">
+                            <Form.Label>Link da Imagem</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="imagem2"
+                                value={values.imagem2}
+                                onChange={handleChange}
+                                isInvalid={errors.imagem2}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                {errors.imagem2}
+                            </Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group className="mb-4" controlId="imagem3">
+                            <Form.Label>Link da Imagem</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="imagem3"
+                                value={values.imagem3}
+                                onChange={handleChange}
+                                isInvalid={errors.imagem3}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                {errors.imagem3}
                             </Form.Control.Feedback>
                         </Form.Group>
 
