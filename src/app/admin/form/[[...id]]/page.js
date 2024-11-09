@@ -143,7 +143,7 @@ export default function Page() {
                         </Form.Group>
                         
                         <Form.Group className="mb-4" controlId="imagem">
-                            <Form.Label>Link da Imagem</Form.Label>
+                            <Form.Label>Link da Imagem 1</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="imagem"
@@ -157,7 +157,7 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="imagem2">
-                            <Form.Label>Link da Imagem</Form.Label>
+                            <Form.Label>Link da Imagem 2</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="imagem2"
@@ -171,7 +171,7 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="imagem3">
-                            <Form.Label>Link da Imagem</Form.Label>
+                            <Form.Label>Link da Imagem 3</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="imagem3"
@@ -306,5 +306,5 @@ export default function Page() {
             </Formik>
             <br />
         </Pagina>
-    );
-}
+        );
+    }

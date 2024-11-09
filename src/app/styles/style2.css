@@ -5,11 +5,20 @@ body {
     overflow-x: hidden;
 }
 
-.carddetalhe{
+.carddetalhe {
     width: '100%';
     max-width: 1000px;
     padding: 2rem;
-    box-shadow: 0 4px 10px white;
-    border-radius: 15px;
-    margin-top: -20px;
+    box-shadow: 0 4px 7px white;
+    border-radius: 5px;
+}
+
+.custom-card {
+    box-shadow: 0 4px 7px white;
+}
+
+.custom-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px white;
+    position: relative;
 }

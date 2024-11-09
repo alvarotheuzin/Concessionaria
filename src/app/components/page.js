@@ -19,17 +19,17 @@ export default function Pagina(props) {
                     <Navbar.Toggle aria-controls="navbar-nav" />
                     <Navbar.Collapse id="navbar-nav">
                         <Nav className="mx-auto">
-                            <NavDropdown title="Populares" id="nav-dropdown-hatch">
+                            <NavDropdown title="Cliente" id="nav-dropdown-hatch">
                                 <NavDropdown.Item href="/populares">Lista</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/populares/form">Novos Populares</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="SUVs" id="nav-dropdown-suvs">
+                            <NavDropdown title="Em Espera" id="nav-dropdown-suvs">
                                 <NavDropdown.Item href="/suvs">Listar</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/suvs/form">Nova SUV</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Sedan" id="nav-dropdown-sedan">
+                            <NavDropdown title="Peças" id="nav-dropdown-sedan">
                                 <NavDropdown.Item href="/sedans">Listar</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/sedans/form">Novo Sedan</NavDropdown.Item>
