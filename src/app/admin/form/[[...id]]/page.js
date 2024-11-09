@@ -291,7 +291,7 @@ export default function Page() {
                         </Form.Group>
 
                         <div className="text-center">
-                            <Button type="submit" variant="success">
+                            <Button type="submit" variant="danger">
                                 <FaCheck /> Salvar
                             </Button>
                             <Link
