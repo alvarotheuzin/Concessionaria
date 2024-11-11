@@ -19,21 +19,9 @@ export default function Pagina(props) {
                     <Navbar.Toggle aria-controls="navbar-nav" />
                     <Navbar.Collapse id="navbar-nav">
                         <Nav className="mx-auto">
-                            <NavDropdown title="Cliente" id="nav-dropdown-hatch">
-                                <NavDropdown.Item href="/populares">Lista</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="/populares/form">Novos Populares</NavDropdown.Item>
-                            </NavDropdown>
-                            <NavDropdown title="Em Espera" id="nav-dropdown-suvs">
-                                <NavDropdown.Item href="/suvs">Listar</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="/suvs/form">Nova SUV</NavDropdown.Item>
-                            </NavDropdown>
-                            <NavDropdown title="Peças" id="nav-dropdown-sedan">
-                                <NavDropdown.Item href="/sedans">Listar</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="/sedans/form">Novo Sedan</NavDropdown.Item>
-                            </NavDropdown>
+                        <Nav.Link href="/clientes/form">Receber Novidades</Nav.Link>
+                        <Nav.Link href="/pecas/pagina">Para o seu Carros</Nav.Link>
+                        <Nav.Link href="/desejos/form">Desejo</Nav.Link>
                         </Nav>
                         <Nav>
                             <NavDropdown title={<FaUser />} id="nav-dropdown-user" align="end">

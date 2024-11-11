@@ -57,10 +57,9 @@ export default function DetalhesCarro({ params }) {
     localStorage.setItem('contatos', JSON.stringify(contatos));
   };
 
-  // Função que aplica a máscara usando remask
   const handleTelefoneChange = (e) => {
     const { name, value } = e.target;
-    const maskedValue = mask(value, "(99) 99999-9999"); // Máscara para telefone
+    const maskedValue = mask(value, "(99) 99999-9999");
     setFormData({ ...formData, [name]: maskedValue });
   };
 

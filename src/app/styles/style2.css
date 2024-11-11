@@ -22,3 +22,8 @@ body {
     box-shadow: 0 2px 8px white;
     position: relative;
 }
+    
+.d-flex.justify-content-center.p-1 img {
+    margin: 0 auto;
+  }
+  

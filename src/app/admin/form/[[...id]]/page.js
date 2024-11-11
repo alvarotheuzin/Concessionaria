@@ -113,8 +113,8 @@ export default function Page() {
                             <Form.Control.Feedback type="invalid">
                                 {errors.modelo}
                             </Form.Control.Feedback>
-
                         </Form.Group>
+                        
                         <Form.Group className="mb-4" controlId="valor">
                             <Form.Label>Valor</Form.Label>
                             <Form.Control

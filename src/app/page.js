@@ -198,37 +198,33 @@ export default function Home() {
         {carrosFiltrados.length > 0 ? (
           <Row>
             {carrosFiltrados.map((carro, i) => (
-              <Col key={i} sm={12} md={6} lg={4} xl={3} className="mb-4" style={{ flexBasis: '20%' }}>
-                <Card style={cardStyle}>
+              <Col key={i} sm={12} md={6} lg={4} xl={3} className="mb-4">
+                <Card className="custom-card">
                   <Card.Img
                     variant="top"
                     src={carro.imagem}
                     alt={`Imagem do carro ${carro.nome}`}
-                    style={imageStyle}
+                    className="custom-card-img"
                   />
                   <Card.Body>
                     <Card.Title>{carro.nome}</Card.Title>
-                    <Card.Text>
-                      {carro.motor}
-                    </Card.Text>
-                    <Card.Text>
-                      {formatarValor(carro.valor)}
-                    </Card.Text>
-                    <Card.Text>
-                      Ano: {carro.ano}
-                    </Card.Text>
-                    <Link href={`/detalhes/${carro.id}`}>
-                      <Button variant="primary">Ver Detalhes</Button>
-                    </Link>
-                </Card.Body>
-              </Card>
+                    <Card.Text>{carro.motor}</Card.Text>
+                    <Card.Text>{formatarValor(carro.valor)}</Card.Text>
+                    <Card.Text>Ano: {carro.ano}</Card.Text>
+                    <div className="d-flex justify-content-center">
+                      <Link href={`/detalhes/${carro.id}`}>
+                        <Button className="custom-btn" variant="primary">Ver Detalhes</Button>
+                      </Link>
+                    </div>
+                  </Card.Body>
+                </Card>
               </Col>
-        ))}
-      </Row>
-      ) : (
-      <p className="text-center">Nenhum carro cadastrado.</p>
+            ))}
+          </Row>
+        ) : (
+          <p className="text-center">Nenhum carro cadastrado.</p>
         )}
-    </Pagina>
+      </Pagina>
     </div >
   );
 }
