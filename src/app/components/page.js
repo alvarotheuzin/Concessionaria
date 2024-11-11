@@ -22,6 +22,7 @@ export default function Pagina(props) {
                         <Nav.Link href="/clientes/form">Receber Novidades</Nav.Link>
                         <Nav.Link href="/pecas/pagina">Para o seu Carros</Nav.Link>
                         <Nav.Link href="/desejos/form">Desejo</Nav.Link>
+                        <Nav.Link href="/grafico">Grafico de Carros</Nav.Link>
                         </Nav>
                         <Nav>
                             <NavDropdown title={<FaUser />} id="nav-dropdown-user" align="end">

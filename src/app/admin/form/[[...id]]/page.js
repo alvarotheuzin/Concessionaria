@@ -27,6 +27,17 @@ export default function Page() {
 
     const [valorFormatado, setValorFormatado] = useState("");
 
+    // Função para converter a imagem para base64 após o upload
+    const handleFileChange = (e, setFieldValue, fieldName) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setFieldValue(fieldName, reader.result);
+            };
+            reader.readAsDataURL(file);  // Converte a imagem para base64
+        }
+    };
 
     function salvar(dados) {
         if (dados.id) {
@@ -64,7 +75,6 @@ export default function Page() {
                     setFieldValue,
                     errors,
                 }) => (
-
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-4" controlId="nome">
                             <Form.Label>Nome</Form.Label>
@@ -143,12 +153,11 @@ export default function Page() {
                         </Form.Group>
                         
                         <Form.Group className="mb-4" controlId="imagem">
-                            <Form.Label>Link da Imagem 1</Form.Label>
+                            <Form.Label>Imagem 1</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="file"
                                 name="imagem"
-                                value={values.imagem}
-                                onChange={handleChange}
+                                onChange={(e) => handleFileChange(e, setFieldValue, "imagem")}
                                 isInvalid={errors.imagem}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -157,12 +166,11 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="imagem2">
-                            <Form.Label>Link da Imagem 2</Form.Label>
+                            <Form.Label>Imagem 2</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="file"
                                 name="imagem2"
-                                value={values.imagem2}
-                                onChange={handleChange}
+                                onChange={(e) => handleFileChange(e, setFieldValue, "imagem2")}
                                 isInvalid={errors.imagem2}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -171,12 +179,11 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="imagem3">
-                            <Form.Label>Link da Imagem 3</Form.Label>
+                            <Form.Label>Imagem 3</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="file"
                                 name="imagem3"
-                                value={values.imagem3}
-                                onChange={handleChange}
+                                onChange={(e) => handleFileChange(e, setFieldValue, "imagem3")}
                                 isInvalid={errors.imagem3}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -245,7 +252,6 @@ export default function Page() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-
                         <Form.Group className="mb-4" controlId="motor">
                             <Form.Label>Motor</Form.Label>
                             <Form.Control
@@ -275,36 +281,41 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="portas">
-                            <Form.Label>Quantidade de Portas</Form.Label>
+                            <Form.Label>Portas</Form.Label>
                             <Form.Control
-                                type="number"
+                                as="select"
                                 name="portas"
                                 value={values.portas}
                                 onChange={handleChange}
                                 isInvalid={errors.portas}
-                                max={5}
-                                min={2}
-                            />
+                            >
+                                <option value="">Selecione o número de portas</option>
+                                {[2, 3, 4, 5].map((num) => (
+                                    <option key={num} value={num}>
+                                        {num} portas
+                                    </option>
+                                ))}
+                            </Form.Control>
                             <Form.Control.Feedback type="invalid">
                                 {errors.portas}
                             </Form.Control.Feedback>
                         </Form.Group>
 
                         <div className="text-center">
-                            <Button type="submit" variant="danger">
-                                <FaCheck /> Salvar
-                            </Button>
-                            <Link
-                                href="/admin"
-                                className="btn btn-danger ms-2"
-                            >
+                            <Link href="/admin" className="btn btn-dark me-2">
                                 <MdOutlineArrowBack /> Voltar
                             </Link>
+                            <Button variant="success" type="submit">
+                                <FaCheck /> Salvar
+                            </Button>
                         </div>
                     </Form>
                 )}
             </Formik>
-            <br />
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </Pagina>
-        );
-    }
+    );
+}
