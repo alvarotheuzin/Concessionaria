@@ -71,7 +71,7 @@ export default function RegisterPage() {
                                     <Form.Label className="escrita">Senha do Lojista</Form.Label>
                                     <Form.Control
                                         type="password"
-                                        placeholder="Digite sua senha secreta"
+                                        placeholder="Digite a senha do lojista"
                                         value={secretPassword}
                                         onChange={(e) => setSecretPassword(e.target.value)}
                                         required

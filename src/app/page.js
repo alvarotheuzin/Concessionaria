@@ -71,15 +71,8 @@ export default function Home() {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://tpc.googlesyndication.com/simgad/9741072406721062648?"
+                src="https://tpc.googlesyndication.com/simgad/4177215592910125407?"
                 alt="Slide 2"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://tpc.googlesyndication.com/simgad/9741072406721062648?"
-                alt="Slide 3"
               />
             </Carousel.Item>
           </Carousel>

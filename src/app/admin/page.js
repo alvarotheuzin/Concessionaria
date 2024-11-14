@@ -77,6 +77,9 @@ export default function Carros() {
                 <Link href="/desejos" className="btn btn-danger mx-2">
                     Desejos
                 </Link>
+                <Link href="/contato" className="btn btn-danger mx-2">
+                    Contatos
+                </Link>
             </div>
 
             {carros.length > 0 ? (

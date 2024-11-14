@@ -76,7 +76,7 @@ export default function Page() {
                                 onChange={e =>
                                     setFieldValue(
                                         "numero",
-                                        mask(e.target.value, ["(99) 99999-9999"])
+                                        mask(targete.value, ["(99) 99999-9999"])
                                     )
                                 }
                                 isInvalid={errors.numero}

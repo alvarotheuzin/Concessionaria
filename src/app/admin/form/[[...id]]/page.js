@@ -8,7 +8,7 @@ import { useRouter, useParams } from "next/navigation";
 import { Button, Form } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineArrowBack } from "react-icons/md";
-import { v4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import React, { useEffect, useState } from "react";
 import { mask } from "remask";
 
@@ -27,24 +27,12 @@ export default function Page() {
 
     const [valorFormatado, setValorFormatado] = useState("");
 
-    // Função para converter a imagem para base64 após o upload
-    const handleFileChange = (e, setFieldValue, fieldName) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setFieldValue(fieldName, reader.result);
-            };
-            reader.readAsDataURL(file);  // Converte a imagem para base64
-        }
-    };
-
     function salvar(dados) {
         if (dados.id) {
             const index = carros.findIndex(item => item.id === dados.id);
             if (index > -1) carros[index] = dados;
         } else {
-            dados.id = v4();
+            dados.id = uuidv4();
             carros.push(dados);
         }
 
@@ -107,7 +95,6 @@ export default function Page() {
                         <Form.Group className="mb-4" controlId="modelo">
                             <Form.Label>Modelo</Form.Label>
                             <Form.Select
-                                as="select"
                                 name="modelo"
                                 value={values.modelo}
                                 onChange={handleChange}
@@ -153,11 +140,12 @@ export default function Page() {
                         </Form.Group>
                         
                         <Form.Group className="mb-4" controlId="imagem">
-                            <Form.Label>Imagem 1</Form.Label>
+                            <Form.Label>Link da Imagem 1</Form.Label>
                             <Form.Control
-                                type="file"
+                                type="text"
                                 name="imagem"
-                                onChange={(e) => handleFileChange(e, setFieldValue, "imagem")}
+                                value={values.imagem}
+                                onChange={handleChange}
                                 isInvalid={errors.imagem}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -166,11 +154,12 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="imagem2">
-                            <Form.Label>Imagem 2</Form.Label>
+                            <Form.Label>Link da Imagem 2</Form.Label>
                             <Form.Control
-                                type="file"
+                                type="text"
                                 name="imagem2"
-                                onChange={(e) => handleFileChange(e, setFieldValue, "imagem2")}
+                                value={values.imagem2}
+                                onChange={handleChange}
                                 isInvalid={errors.imagem2}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -179,11 +168,12 @@ export default function Page() {
                         </Form.Group>
 
                         <Form.Group className="mb-4" controlId="imagem3">
-                            <Form.Label>Imagem 3</Form.Label>
+                            <Form.Label>Link da Imagem 3</Form.Label>
                             <Form.Control
-                                type="file"
+                                type="text"
                                 name="imagem3"
-                                onChange={(e) => handleFileChange(e, setFieldValue, "imagem3")}
+                                value={values.imagem3}
+                                onChange={handleChange}
                                 isInvalid={errors.imagem3}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -283,39 +273,30 @@ export default function Page() {
                         <Form.Group className="mb-4" controlId="portas">
                             <Form.Label>Portas</Form.Label>
                             <Form.Control
-                                as="select"
+                                type="number"
                                 name="portas"
                                 value={values.portas}
                                 onChange={handleChange}
                                 isInvalid={errors.portas}
-                            >
-                                <option value="">Selecione o número de portas</option>
-                                {[2, 3, 4, 5].map((num) => (
-                                    <option key={num} value={num}>
-                                        {num} portas
-                                    </option>
-                                ))}
-                            </Form.Control>
+                            />
                             <Form.Control.Feedback type="invalid">
                                 {errors.portas}
                             </Form.Control.Feedback>
                         </Form.Group>
 
                         <div className="text-center">
-                            <Link href="/admin" className="btn btn-dark me-2">
-                                <MdOutlineArrowBack /> Voltar
-                            </Link>
-                            <Button variant="success" type="submit">
+                            <Button variant="danger" type="submit" className="me-2">
                                 <FaCheck /> Salvar
                             </Button>
+                            <Link href="/admin">
+                                <Button variant="danger">
+                                    <MdOutlineArrowBack /> Voltar
+                                </Button>
+                            </Link>
                         </div>
                     </Form>
                 )}
             </Formik>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
         </Pagina>
     );
 }
